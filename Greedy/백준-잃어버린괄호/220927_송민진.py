@@ -1,7 +1,6 @@
 calc_str = input()
-answer = 0
-
 operation_list = []
+answer = 0
 
 for letter in calc_str:
     if letter == '+' or letter == '-':

@@ -1,6 +1,7 @@
 n = int(input())
 dasom = int(input())
 candidates = [int(input()) for _ in range(n-1)]
+
 answer = 0
 
 if candidates:

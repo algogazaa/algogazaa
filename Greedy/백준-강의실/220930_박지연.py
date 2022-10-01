@@ -1,28 +1,28 @@
-"""  시간초과
+# #시간초과
+#
+# n = int(input())
+# lecture = []
+# for i in range(n):
+#     a, b, c = map(int, input().split())
+#     lecture.append([b,c])
+# lecture.sort()
+#
+# result = []
+# j = 0
+# count = 0
+# while len(result) != len(lecture):
+#     if lecture[j] not in result:
+#         result.append(lecture[j])
+#         end_time = lecture[j][1]
+#         for k in range(j+1, len(lecture)):
+#             if lecture[k][0] >= end_time and lecture[k] not in result:
+#                 result.append(lecture[k])
+#     count += 1
+#     j += 1
+#
+# print(count)
 
-n = int(input())
-lecture = []
-for i in range(n):
-    a, b, c = map(int, input().split())
-    lecture.append([b,c])
-lecture.sort()
 
-result = []
-j = 0
-count = 0
-while len(result) != len(lecture):
-    if lecture[j] not in result:
-        result.append(lecture[j])
-        end_time = lecture[j][1]
-        for k in range(j+1, len(lecture)):
-            if lecture[k][0] >= end_time and lecture[k] not in result:
-                result.append(lecture[k])
-    count += 1
-    j += 1
-
-print(count)
-
-"""
 import heapq
 
 n = int(input())
@@ -32,9 +32,8 @@ for i in range(n):
     lecture.append([b, c])
 lecture.sort()
 
-j = 0
-count = 0
-result = []
+result = [12, 13]
+
 
 for i in lecture:
     if result and result[0] <= i[0]: # 가장 일찍 끝나는 시간보다 시작 시간이 크면

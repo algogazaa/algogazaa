@@ -8,11 +8,11 @@ else:
     m_list = list(m)
 
     for i in range(len(n_list)):
-        if n_list[i] == m_list[i] and m_list[i] == '8' and n_list[i] == '8':
+        if m_list[i] == '8' and n_list[i] == '8':
             count += 1
+        elif m_list[i] == n_list[i]:
+            continue
         else:
             break
     print(count)
 
-
-## ??!?!?!?!?

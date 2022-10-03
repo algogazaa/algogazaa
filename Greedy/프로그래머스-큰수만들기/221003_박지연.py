@@ -1,9 +1,10 @@
+# # 실패 - 이유 :
 # def solution(number, k):
 #     number_list = list(number)
-#     cut_list = number_list[:k+1]
+#     cut_list = number_list[:k+1] #4177252841 k =4
 #
 #     max_first = max(cut_list)
-#     max_index = cut_list.index(max_first)
+#     max_index = cut_list.index(max_first) # => 2
 #
 #     a = number_list[max_index:]
 #     i = 1
@@ -15,6 +16,7 @@
 #             a = a[:i] + a[i+1:]
 #
 #         i += 1
+#      # 775841 54321
 #
 #     if len(a) > len(number) - k:
 #         a = a[:len(number)-k]
@@ -43,4 +45,5 @@ def solution(number, k):
 a = "4177252841"
 b = "654321"
 c = "1234567"
-print(solution(a, 4))
+d = "422753"
+print(solution(d, 2))

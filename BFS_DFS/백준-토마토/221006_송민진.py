@@ -21,7 +21,7 @@ dz = [0, 0, 0, 0, -1, 1]
 
 while tomato:
     x, y, z = tomato.popleft()
-    for i in range(5):
+    for i in range(6):
         nx = x + dx[i]
         ny = y - dy[i]
         nz = z + dz[i]
@@ -30,14 +30,13 @@ while tomato:
             box[nx][ny][nz] = box[x][y][z] + 1
             tomato.append([nx, ny, nz])
 
-    for i in box:
-        for j in i:
-            for k in j:
-                if k == 0:
-                    print(-1)
-                    exit()
-            day = max(day, max(j))
+for i in box:
+    for j in i:
+        for k in j:
+            if k == 0:
+                print(-1)
+                exit()
+        day = max(day, max(j))
 
 # 처음부터 익은 토마토가 존재하고, 따라서 시작점이 1이기 때문에 day - 1
 print(day - 1)
-

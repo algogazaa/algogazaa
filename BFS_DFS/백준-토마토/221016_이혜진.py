@@ -1,3 +1,4 @@
+#런타임에러
 #1 익은 토마토, 0 익지x 토마토, -1 토마토없음
 import sys
 from collections import deque

@@ -1,5 +1,8 @@
-#런타임에러
 #1 익은 토마토, 0 익지x 토마토, -1 토마토없음
+#m,x,j
+#n,y,i
+#h,z,k
+
 import sys
 from collections import deque
 
@@ -9,7 +12,7 @@ que=deque()
 for k in range(h):
     tmp=[]
     for i in range(n):
-        tmp.append(list(map(int,sys.stdin.readline().split)))
+        tmp.append(list(map(int,sys.stdin.readline().split())))
         for j in range(m):
             if tmp[i][j]==1: #익은 토마토만 que에 담기
                 que.append((k,i,j))
@@ -36,9 +39,8 @@ def bfs(que):
                 continue
             #조건 해당
             if g[nz][ny][nx]==0:
-                g[nz][ny][nx]==g[z][y][x]+1 
+                g[nz][ny][nx]=g[z][y][x]+1 
                 que.append((nz,ny,nx))
-
 
 
 bfs(que)
@@ -48,7 +50,7 @@ for k in range(h):
     for i in range(n):
         for j in range(m):
             if g[k][i][j]==0: #안 익은 토마토가 있는경우
-                flag==True
+                flag=True #틀1) =대신 ==써서..
                 break
 
 g_max=[]
@@ -57,4 +59,4 @@ if flag==True:
 else:
     for k in range(h):
         g_max.append(max(map(max,g[k])))
-    print(max(g_max))
+    print(max(g_max)-1) #틀2) -1 해주기

@@ -22,5 +22,8 @@ def solution(maps):
             if maps[nx][ny] == 1:
                 maps[nx][ny] = maps[x][y] + 1
                 queue.append((nx, ny))
-    if maps[n-1][m-1] in [0, 1]: return -1
-    else: return maps[n-1][m-1]
+                
+    if maps[n-1][m-1] in [0, 1]:
+        return -1
+    else:
+        return maps[n-1][m-1]

@@ -1,4 +1,5 @@
 from collections import deque
+from typing import List
 def solution(n: int, m: int, fires: List[List[int]], ices: List[List[int]]) -> List[List[int]]:
     answer = []
     graph = [[0] * n for _ in range(n)]
@@ -18,6 +19,7 @@ def solution(n: int, m: int, fires: List[List[int]], ices: List[List[int]]) -> L
     return answer
 
 def bfs(n,start, graph, visited, changeTemp):
+    
     q = deque([start])
     visited[start[0]][start[1]] = True
     if changeTemp == 1:

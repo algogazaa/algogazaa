@@ -3,13 +3,13 @@ from collections import deque
 
 def solution(n, m, fires, ices):
     frame = [[0 for _ in range(n)] for _ in range(n)]
-    for k in range(m):
-        for i in range(n):
-            for j in range(n):
-                if [i+1, j+1] in fires:
-                    fire(n, i, j, k+1, frame)
-                if [i+1, j+1] in ices:
-                    ice(n, i, j, k+1, frame)
+
+    for i in fires:
+        fire(n, i[0]-1, i[1]-1, m-1, frame)
+
+    for j in ices:
+        ice(n, j[0]-1, j[1]-1, m-1, frame)
+
     print(frame)
 
 
@@ -20,8 +20,8 @@ def fire(n, i, j, k, frames):
     isvisited = [[False for _ in range(n)]for _ in range(n)]
 
     queue = deque()
-    queue.append([i, j, 0])
-    frames[i][j] += 1
+    queue.append([i, j, k+1])
+    frames[i][j] += k+1
 
     while queue:
         a, b, c = queue.popleft()
@@ -30,13 +30,12 @@ def fire(n, i, j, k, frames):
         for w in range(8):
             nx = a + dx[w]
             ny = b + dy[w]
-            nc = c + 1
 
-            if 0<= nx < n and 0<= ny < n and nc <= k:
+            if 0<= nx < n and 0<= ny < n:
                 if isvisited[nx][ny] == False:
                     isvisited[nx][ny] = True
-                    frames[nx][ny] += 1
-                    queue.append([nx, ny, nc])
+                    frames[nx][ny] += c
+                    queue.append([nx, ny, c-1])
 
 
 def ice(n, i, j, k, frames):
@@ -46,8 +45,8 @@ def ice(n, i, j, k, frames):
     isvisited = [[False for _ in range(n)]for _ in range(n)]
 
     queue = deque()
-    queue.append([i, j, 0])
-    frames[i][j] -= 1
+    queue.append([i, j, k+1])
+    frames[i][j] += -(k+1)
 
     while queue:
         a, b, c = queue.popleft()
@@ -56,13 +55,12 @@ def ice(n, i, j, k, frames):
         for w in range(4):
             nx = a + dx[w]
             ny = b + dy[w]
-            nc = c + 1
 
-            if 0<= nx < n and 0<= ny < n and nc <= k:
+            if 0<= nx < n and 0<= ny < n:
                 if isvisited[nx][ny] == False:
                     isvisited[nx][ny] = True
-                    frames[nx][ny] -= 1
-                    queue.append([nx, ny, nc])
+                    frames[nx][ny] -= 1 * c
+                    queue.append([nx, ny, c-1])
 
 a = [[1, 1]]
 b = [[3, 3]]

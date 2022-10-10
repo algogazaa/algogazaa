@@ -33,6 +33,10 @@ def solution(n, info):
                         num += apeach+1
                         queue.append([rrsult, ssum, ap_sum, num])
                 else:
+                    rrsult = copy.deepcopy(n_result)
+                    rrsult.append(0)
+                    queue.append([rrsult, ssum, ap_sum, num])
+
                     if num + 1 <= n:
                         rrsult = copy.deepcopy(n_result)
                         rrsult.append(1)
@@ -44,7 +48,7 @@ def solution(n, info):
                 for i in range(len(n_result), len(info)):
                     if info[i] != 0:
                         ap_sum += (10-i)
-            if max_num < ssum - ap_sum:
+            if max_num <= ssum - ap_sum:
                 max_num = ssum - ap_sum
                 answer = n_result
 
@@ -61,5 +65,6 @@ a = [2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]
 b = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 c = [0, 0, 1, 2, 0, 1, 1, 1, 1, 1, 1]
 d = [0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 3]
+e = [0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0]
 
-print(solution(10, d))
+print(solution(9, c))

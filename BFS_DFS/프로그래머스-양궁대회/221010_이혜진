@@ -1,0 +1,29 @@
+from itertools import combinations_with_replacement
+
+
+def solution(n, info):
+    answer = [-1]
+    max_gap = -1 
+    com=combinations_with_replacement(range(11), n)
+
+    for combi in com:  
+        lion_list = [0] * 11  # 
+
+        for i in combi:  
+            lion_list[10 - i] += 1
+
+        apeach, lion = 0, 0
+        for idx in range(11):
+            if info[idx] == lion_list[idx] == 0:  #어피치x라이언x
+                continue
+            elif info[idx] >= lion_list[idx]:  # 어피치>라이언
+                apeach += 10 - idx
+            else:  # 어피치<라이언
+                lion += 10 - idx
+
+        if lion > apeach:  
+            gap = lion - apeach  
+            if gap > max_gap: 
+                max_gap = gap
+                answer = lion_list
+    return answer

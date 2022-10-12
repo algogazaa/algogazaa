@@ -10,12 +10,10 @@ def outofblock(x, y):
 
 # bfs
 def how_many_times(board, current_position, position_to_move): 
-    # print(f'current_position, position_to_move : {current_position, position_to_move}')
-    # input format : board, [1,0], [0,1]
     q = deque()
     new_current_position = current_position[:]
     new_current_position.append(0)
-    q.append(new_current_position) # [1,0,0] 0-> move count
+    q.append(new_current_position) # [1,0,0] 0-> 움직이는 횟수
 
     while q:
         r, c, k = q.popleft()
@@ -25,13 +23,13 @@ def how_many_times(board, current_position, position_to_move):
             return k
 
         for i in range(4):
-            # without ctrl
+            # ctrl없이 이동
             new_r = r + mov_r[i]
             new_c = c + mov_c[i]
             if not outofblock(new_r, new_c):
                 q.append([new_r, new_c, k+1])
 
-            # with ctrl
+            # ctrl로 이동
             flag = 0
             while(not outofblock(new_r, new_c) and board[new_r][new_c] == 0):
                 flag = 1
@@ -44,7 +42,6 @@ def how_many_times(board, current_position, position_to_move):
                 else:
                     q.append([new_r, new_c, k+1])
     
-    # not reachable
     return -1
 
 def solution(board, r, c):
@@ -64,7 +61,6 @@ def solution(board, r, c):
         # print(i)
         # dfs
         s = [[r,c,board,0,0]] # stack 0,0 -> cnt, numcard
-        
         while s:
             temp = s.pop()
             if len(answer_list) != 0 and temp[3] >= min(answer_list):

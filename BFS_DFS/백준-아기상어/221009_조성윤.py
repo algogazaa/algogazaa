@@ -76,6 +76,4 @@ while True:
             if eat_cnt == shark_size:
                 eat_cnt = 0
                 shark_size += 1
-
-            
-
+                

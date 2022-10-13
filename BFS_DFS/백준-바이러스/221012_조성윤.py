@@ -17,7 +17,7 @@ def dfs(start, result):
     for i in connection[start]:
         if not visited[i]:
             result += 1
-            result = dfs(i, result)
+            dfs(i, result)
     
     return result        
 print(dfs(1,result))

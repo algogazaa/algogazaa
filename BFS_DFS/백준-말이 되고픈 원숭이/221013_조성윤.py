@@ -30,7 +30,6 @@ def bfs(x, y, k):
                     visited[nx][ny][hmove-1] = True
                     q.append([nx,ny,hmove - 1, totalMove + 1])
                     
- 
         
         for i in range(4):
             nx = x + dx[i]

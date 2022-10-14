@@ -15,18 +15,17 @@ def bfs(a):
         location, dis, visited = q.popleft()
         if location == b:
             return dis
+
         for i in range(3):
             if i == 2:
                 n_location = location * dx[i]
             else:
                 n_location = location + dx[i]
+
             if 0<= n_location < 100001:
                 if not visited[n_location]:
                     real_vis = copy.deepcopy(visited)
                     real_vis[n_location] = True
                     n_dis = dis + 1
                     q.append([n_location, n_dis, real_vis])
-
-
-
 print(bfs(a))

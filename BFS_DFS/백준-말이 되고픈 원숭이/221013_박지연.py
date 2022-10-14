@@ -1,3 +1,4 @@
+import copy
 import sys
 from collections import deque
 
@@ -17,13 +18,9 @@ def bfs(q):
 
     while q:
         x, y, count, dis, visitedd = q.popleft()
-        visitedd[x][y] = True
 
         if x == n-1 and y == m-1:
-            if result == -1:
-                result = dis
-            else:
-                result = min(result, dis)
+            return dis
 
         if count != 0:
             for i in range(8):
@@ -34,8 +31,9 @@ def bfs(q):
 
                 if 0 <= nx < n and 0 <= ny < m:
                     if map[nx][ny] != 1 and visitedd[nx][ny] == False:
-                        q.append([nx, ny, n_count, n_dis, visitedd])
-                        visitedd[x][y] = False
+                        real_vis = copy.deepcopy(visitedd)
+                        real_vis[nx][ny] = True
+                        q.append([nx, ny, n_count, n_dis, real_vis])
 
         for i in range(4):
             nx = dx[i] + x
@@ -44,7 +42,9 @@ def bfs(q):
 
             if 0 <= nx < n and 0 <= ny < m and visitedd[nx][ny] == False:
                 if map[nx][ny] != 1:
-                    q.append([nx, ny, count, n_dis, visitedd])
+                    real_vis = copy.deepcopy(visitedd)
+                    real_vis[nx][ny] = True
+                    q.append([nx, ny, count, n_dis, real_vis])
 
     return result
 
@@ -56,5 +56,12 @@ isvisited[0][0] = True
 result = bfs(queue)
 print(result)
 
+#반례
+# 1
+# 4 4
+# 0 0 0 0
+# 0 0 0 0
+# 0 0 1 1
+# 0 0 1 0
 
 

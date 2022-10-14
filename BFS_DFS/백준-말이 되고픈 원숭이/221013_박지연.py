@@ -16,9 +16,10 @@ def bfs(q):
     result = -1
 
     while q:
-        x, y, count, dis, visited = q.popleft()
+        x, y, count, dis, visitedd = q.popleft()
+        visitedd[x][y] = True
 
-        if x == n and y == m:
+        if x == n-1 and y == m-1:
             if result == -1:
                 result = dis
             else:
@@ -28,25 +29,24 @@ def bfs(q):
             for i in range(8):
                 nx = mx[i] + x
                 ny = my[i] + y
-                n_count = cnt - 1
+                n_count = count - 1
                 n_dis = dis + 1
 
                 if 0 <= nx < n and 0 <= ny < m:
-                    if map[nx][ny] != 1 and visited[nx][ny] == False:
-                        visited[nx][ny] = True
-                        q.append([nx, ny, n_count, n_dis, visited])
+                    if map[nx][ny] != 1 and visitedd[nx][ny] == False:
+                        q.append([nx, ny, n_count, n_dis, visitedd])
+                        visitedd[x][y] = False
 
         for i in range(4):
             nx = dx[i] + x
             ny = dy[i] + y
             n_dis = dis + 1
 
-            if 0 <= nx < n and 0 <= ny < m and visited[nx][ny] == False:
+            if 0 <= nx < n and 0 <= ny < m and visitedd[nx][ny] == False:
                 if map[nx][ny] != 1:
-                    visited[nx][ny] = True
-                    q.append([nx, ny, count, n_dis, visited])
+                    q.append([nx, ny, count, n_dis, visitedd])
 
-    return dis
+    return result
 
 
 isvisited = [[False for _ in range(m)]for _ in range(n)]

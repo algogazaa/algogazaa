@@ -1,20 +1,22 @@
+from collections import defaultdict
+
 n = int(input())
 m = int(input())
-node_list = [list(map(int, input().split())) for _ in range(m)]
 visited = [False for _ in range(n)]
+connection = defaultdict(list)
 
-def dfs(index):
+for _ in range(m):
+    a, b = map(int, input().split())
+    connection[a].append(b)
+    connection[b].append(a)
+
+def dfs(index, result):
     visited[index-1] = True
-    answer = 0
-    for i in node_list:
-        if visited[i[0]-1] and not visited[i[1]-1]:
-            visited[i[1] - 1] = True
-            answer += 1
-            answer += dfs(i[1])
-        elif not visited[i[0]-1] and visited[i[1]-1]:
-            visited[i[0]-1] = True
-            answer += 1
-            answer += dfs(i[0])
-    return answer
+    for i in connection[index]:
+        if not visited[i]:
+            result += 1
+            result = dfs(i, result)
 
-print(dfs(1))
+    return result
+
+print(dfs(1, 0))

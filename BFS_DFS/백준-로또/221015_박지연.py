@@ -31,6 +31,12 @@ while True:
 
     k = g[0]
     s = g[1:]
+
+    if k == 0:
+        break
+
+    if k > len(s):
+        continue
     result = bfs(k, s)
     result.sort()
     for i in result:

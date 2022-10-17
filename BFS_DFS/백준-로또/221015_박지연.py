@@ -18,7 +18,7 @@ def bfs(count, num_list):
         if cut_num > 0:
             q.append([answer, index+1, cut_num-1])
 
-        n_answer = copy.deepcopy(answer)
+        n_answer = [item[:] for item in answer]
         n_answer.append(str(num_list[index]))
         q.append([n_answer, index+1, cut_num])
 
@@ -41,4 +41,5 @@ while True:
     result.sort()
     for i in result:
         print(' '.join(i))
+
     print()

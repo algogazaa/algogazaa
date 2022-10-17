@@ -31,7 +31,8 @@ def bfs(q):
 
                 if 0 <= nx < n and 0 <= ny < m:
                     if map[nx][ny] != 1 and visitedd[nx][ny] == False:
-                        real_vis = copy.deepcopy(visitedd)
+                        # real_vis = copy.deepcopy(visitedd)
+                        real_vis = [item[:] for item in visitedd]
                         real_vis[nx][ny] = True
                         q.append([nx, ny, n_count, n_dis, real_vis])
 
@@ -42,7 +43,8 @@ def bfs(q):
 
             if 0 <= nx < n and 0 <= ny < m and visitedd[nx][ny] == False:
                 if map[nx][ny] != 1:
-                    real_vis = copy.deepcopy(visitedd)
+                    # real_vis = copy.deepcopy(visitedd)
+                    real_vis = [item[:] for item in visitedd]
                     real_vis[nx][ny] = True
                     q.append([nx, ny, count, n_dis, real_vis])
 
@@ -55,6 +57,13 @@ queue.append([0, 0, cnt, 0, isvisited])
 isvisited[0][0] = True
 result = bfs(queue)
 print(result)
+
+# 이차원 배열의 경우 slicing으로 복사시
+# a = [[1,2],[3,4]]
+# temp = [i[:] for i in a]
+# 이렇게 복사해야 deepcopy와 같은 효과가 난다.
+# temp = a[:]인 경우 temp = a와 같다.
+
 
 #반례
 # 1

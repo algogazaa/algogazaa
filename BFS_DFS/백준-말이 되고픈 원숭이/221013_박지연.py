@@ -31,7 +31,7 @@ def bfs(q):
 
                 if 0 <= nx < n and 0 <= ny < m:
                     if map[nx][ny] != 1 and visitedd[nx][ny] == False:
-                        real_vis = copy.deepcopy(visitedd)
+                        real_vis = [item[:] for item in visitedd]
                         real_vis[nx][ny] = True
                         q.append([nx, ny, n_count, n_dis, real_vis])
 
@@ -42,7 +42,7 @@ def bfs(q):
 
             if 0 <= nx < n and 0 <= ny < m and visitedd[nx][ny] == False:
                 if map[nx][ny] != 1:
-                    real_vis = copy.deepcopy(visitedd)
+                    real_vis = [item[:] for item in visitedd]
                     real_vis[nx][ny] = True
                     q.append([nx, ny, count, n_dis, real_vis])
 

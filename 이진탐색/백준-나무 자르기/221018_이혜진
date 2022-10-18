@@ -1,0 +1,24 @@
+n,m=map(int,input().split())
+arr=list(map(int,input().split()))
+
+
+def b(arr,target,start,end):
+    while start<=end:
+        mid=(start+end)//2
+        sum=0
+        for i in arr:
+            if i>mid:
+                sum+=i-mid
+        
+        if sum==target:
+            result= mid
+            
+        elif sum<target: #합이 목표보다 작으면 왼쪽 탐색
+            end=mid-1
+        else:
+            result=mid #최대한 '덜'자르는 방법, 기록해놓기.
+            start=mid+1
+    return result
+
+#시작점, 끝점 설정
+print(b(arr,m,0,max(arr)))

@@ -6,28 +6,16 @@ def solution(n, times):
     while start <= end:
         mid = (start + end) // 2
         time, cnt = 0, 0
-        time_list = []
-        m = 0
         for i in times:
-            for j in range(m, n+1):
-                if time + i <= mid:
-                    time += i
-                    if j == n-1:
-                        time_list.append(time)
-                else:
-                    time_list.append(time)
-                    time = 0
-                    m = j + 1
-                    cnt += 1
-                    break
+            cnt += mid//i
 
-        if cnt >= len(times):
-            start = mid + 1
-        else:
-            answer = min(answer, max(time_list))
+        if cnt >= n:
+            answer = mid
             end = mid - 1
+        else:
+            start = mid + 1
 
     return answer
 
 
-print(solution(10, [2, 10]))
+print(solution(6, [7, 10]))

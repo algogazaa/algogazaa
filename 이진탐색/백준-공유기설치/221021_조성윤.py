@@ -14,6 +14,7 @@ while start <= end:
     mid = (start + end) // 2
     curHouse = wifi[0]
     cnt = 1
+    
     for i in range(1,len(wifi)):
         if wifi[i] >= curHouse + mid:
             cnt += 1

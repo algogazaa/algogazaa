@@ -17,12 +17,13 @@ while start <= end:
             temp += mid
         else:
             temp += b
-    
-    if temp >= limit:
-        end = mid - 1
-        answer = mid
-    else:
+    if temp == limit:
+        print(mid)
+        break
+    if temp < limit:
         start = mid + 1
-
-print(answer)
+    else:
+        end = mid - 1
+else:
+    print(end)
         

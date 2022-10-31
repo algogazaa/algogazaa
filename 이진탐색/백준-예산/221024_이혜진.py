@@ -1,4 +1,3 @@
-#시간초과?
 import sys
 input = sys.stdin.readline
 n=int(input())
@@ -19,7 +18,8 @@ def b(arr,target,start,end):
                 total+=mid
         
         if total==target:
-            result=mid
+            #result=mid #시간초과 (start,end값이 안바껴서 무한루트)
+            return mid
         elif total<target:
             start=mid+1
             result=mid

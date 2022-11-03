@@ -17,6 +17,7 @@ while start <= end:
             temp += mid
         else:
             temp += b
+    
     if temp == limit:
         print(mid)
         break

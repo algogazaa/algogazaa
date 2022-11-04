@@ -2,12 +2,12 @@ def solution(gems):
     answer = [0, 0]
     min_length = len(gems)
     type = 0
-    gem_type = []
+    gem_type = {}
 
     for i in gems:
         if i not in gem_type:
             type += 1
-            gem_type.append(i)
+            gem_type[i] = 1
 
     end, cnt = 0, 0
     gem_type = {}

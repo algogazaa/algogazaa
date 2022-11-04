@@ -1,20 +1,19 @@
 import math
 
 n = int(input())
+array = [True for _ in range(n+1)]
 num = []
+for i in range(2, int(math.sqrt(n)) + 1):
+    if array[i]:
+        j = 2
 
-def isPrime(a):
-    for j in range(2, int(math.sqrt(a))+1):
-        if a % j == 0:
-            return False
-    return True
+        while i * j <= n:
+            array[i*j] = False
+            j += 1
 
-
-for i in range(2, n):
-    if isPrime(i):
-        num.append(i)
-    if num[len(num)-2] + i > n:
-        break
+for j in range(2, n+1):
+    if array[j]:
+        num.append(j)
 
 end, cnt, num_sum = 0, 0, 0
 
@@ -28,6 +27,4 @@ for start in range(len(num)):
 
     num_sum -= num[start]
 
-if isPrime(n):
-    cnt += 1
 print(cnt)

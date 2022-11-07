@@ -3,21 +3,34 @@ input = sys.stdin.readline
 
 n, d, k, c = list(map(int, input().split()))
 rail = [int(sys.stdin.readline().rstrip()) for _ in range(n)]
+answer, end, cnt = 0, 0, 0
+dic = {}
 
-is_c = False
+if c not in dic:
+    dic[c] = 1
+else:
+    dic[c] += 1
 
 for start in range(n):
-    for end in range(start, start+4):
 
+    while cnt < k:
         if end >= n:
-            end = end - n + 1
+            end = end - n
 
-        if rail[end] == c:
-            is_c = True
-            start = end + 1
-            break
+        if rail[end] in dic:
+            dic[rail[end]] += 1
+        else:
+            dic[rail[end]] = 1
+
+        end += 1
+        cnt += 1
+
+    answer = max(answer, len(dic))
+
+    if dic[rail[start]] == 1:
+        del dic[rail[start]]
     else:
-        print(k+1)
-        break
-else:
-    print(k)
+        dic[rail[start]] -= 1
+    cnt -= 1
+
+print(answer)

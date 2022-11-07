@@ -2,6 +2,7 @@ def solution(queue1, queue2):
     start, end, cnt = 0, 0, 0
     sum1 = sum(queue1)
     sum2 = sum(queue2)
+    is_visited1, is_visited2 = False, False
 
     if (sum1+sum2)%2 != 0:
         return -1
@@ -25,18 +26,27 @@ def solution(queue1, queue2):
             cnt += 1
 
         if start >= len(queue1):
-            queue1 = queue2[:end]
+            tmp = queue2[:end]
             queue2 = queue2[end:] + queue1
+            queue1 = tmp
             start, end = 0, 0
+            if is_visited1:
+                return -1
+            is_visited1 = True
         elif end >= len(queue2):
-            queue2 = queue1[:start]
+            tmp = queue1[:start]
             queue1 = queue1[start:] + queue2
+            queue2 = tmp
             start, end = 0, 0
+            if is_visited2:
+                return -1
+            is_visited2 = True
 
 
-print(solution([3, 2, 7, 2], [4, 6, 5, 1]))
-print(solution([1, 2, 1, 2], [1, 10, 1, 2]))
-print(solution([1, 1], [1, 5]))
+# print(solution([3, 2, 7, 2], [4, 6, 5, 1]))
+# print(solution([1, 2, 1, 2], [1, 10, 1, 2]))
+# print(solution([1, 1], [1, 5]))
+print(solution([1, 2, 4], [3, 2, 4]))
 
 
 from collections import deque

@@ -1,0 +1,44 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[][] data) {
+        int[] answer = new int[data.length];
+        ArrayList<Integer> num = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        int end = 0;
+
+        while(j != data.length){
+
+            for(int a = 0; a<data.length; a++){
+                if (data[a][1] == i){
+                    num.add(data[a][0]);
+                }
+            }
+
+            if(i >= end && num.size() != 0){
+                int time = data[num.get(0)-1][2];
+                int index = num.get(0);
+
+                for(int b=1; b<num.size(); b++){
+                    if (time > data[num.get(b)-1][2]){
+                        time = data[num.get(b)-1][2];
+                        index = data[num.get(b)-1][0];
+                    }
+                }
+
+                if(end == 0 && i != 0){
+                    end = i;
+                }
+                end += time;
+                answer[j] = index;
+                j += 1;
+                num.remove(Integer.valueOf(index));
+            }
+
+            i += 1;
+        }
+
+        return answer;
+    }
+}

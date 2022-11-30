@@ -16,22 +16,22 @@ def solution(n, blocks):
                 copy_q = deque()
                 while qq:
                     is_visited, count = qq.popleft()
-                    copy_q.append([is_visited, count])
+                    copy_q.append([is_visited, count])  # 현재 i,j에 말을 놓지 않는 경우
 
                     if is_visited[i][j] == 0:
                         copy_vis = copy.deepcopy(is_visited)
-                        isOk, return_vis = isRK(i, j, copy_vis, n)
+                        isOk, return_vis = isRK(i, j, copy_vis, n)  # 현재 위치에서 말을 놓을 수 있는지 판별
 
                         if isOk:
                             if count + 1 == n:
                                 answer += 1
                             else:
-                                copy_q.append([return_vis, count + 1])
+                                copy_q.append([return_vis, count + 1])   # 현재 위치에서 말을 놓는 경우
                 qq = copy_q
 
     return answer
 
-def isRK(x, y, visited, n):
+def isRK(x, y, visited, n):  #룩나이트가 갈 수 있는 곳을 방문처리
     dx = [1, 1, 2, 2, -1, -1, -2, -2, 1, -1, 0, 0]
     dy = [-2, 2, 1, -1, 2, -2, 1, -1, 0, 0, 1, -1]
     isOk = True
@@ -58,6 +58,6 @@ def isRK(x, y, visited, n):
     return isOk, visited
 
 
-print(solution(3, [[1, 2], [2, 1]]))
-print(solution(4, [[1, 3], [1, 4], [2, 1], [2, 2], [3, 3], [3, 4], [4, 1], [4, 2]]))
-print(solution(2, [[1, 1]]))
+print(solution(3, [[1, 2], [2, 1]]), 3)
+print(solution(4, [[1, 3], [1, 4], [2, 1], [2, 2], [3, 3], [3, 4], [4, 1], [4, 2]]), 0)
+print(solution(2, [[1, 1]]), 1)

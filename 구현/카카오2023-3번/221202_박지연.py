@@ -3,12 +3,8 @@ from itertools import *
 def solution(users, emoticons):
     answer = [0, 0]
     dis = [10, 20, 30, 40]
-    # type = []
-    # for i in range(1, 5):
-    #     type += [i*10] * len(emoticons)
 
     real_list = list(product(dis, repeat = len(emoticons)))
-    # real_list = set(printList)
 
     for i in real_list:
         join_num = 0

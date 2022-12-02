@@ -17,13 +17,9 @@ def solution(cap, n, deliveries, pickups):
             if d_cnt > cap:
                 visited.append(i+1)
                 d_cnt -= cap
-            else:
-                d_cnt = 0
             if p_cnt > cap:
                 visited.append(i+1)
                 p_cnt -= cap
-            else:
-                p_cnt = 0
 
         if i == 0 and len(visited) != 0:
             answer += max(visited) * 2

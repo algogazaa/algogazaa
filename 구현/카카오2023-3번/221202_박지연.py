@@ -2,26 +2,26 @@ from itertools import *
 
 def solution(users, emoticons):
     answer = [0, 0]
+    dis = [10, 20, 30, 40]
+    # type = []
+    # for i in range(1, 5):
+    #     type += [i*10] * len(emoticons)
 
-    type = []
-    for i in range(1, 5):
-        type += [i*10] * len(emoticons)
-
-    printList = list(product(type, repeat = len(emoticons)))
-    real_list = set(printList)
+    real_list = list(product(dis, repeat = len(emoticons)))
+    # real_list = set(printList)
 
     for i in real_list:
         join_num = 0
         discount_emo = [0 for _ in range(len(emoticons))]
         price = [0 for _ in range(len(users))]
         for j in range(len(i)):
-            discount_emo[j] = int(emoticons[j] * ((100 - i[j]) / 100))
+            discount_emo[j] = emoticons[j] * (100 - i[j]) // 100
             for k in range(len(users)):
                 if i[j] >= users[k][0]:
                     price[k] += discount_emo[j]
 
         for p in range(len(price)):
-            if users[p][1] < price[p]:
+            if users[p][1] <= price[p]:
                 price[p] = 0
                 join_num += 1
 

@@ -30,5 +30,6 @@ if findMine:
         for y in range(n):
             if mineGraph[x][y] == "*":
                 openGraph[x][y] = "*"
+                
 for o in openGraph:
     print(''.join(o))

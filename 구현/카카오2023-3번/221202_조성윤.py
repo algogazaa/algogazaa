@@ -17,16 +17,16 @@ def dfs(totalRateList,emoticons,users):
             discountedMoney = emoticons[i] * (100 - totalRateList[i]) // 100
             for j in range(len(users)):
                 if users[j][0] <= totalRateList[i]:
-                    tempUsers[i] += discountedMoney
+                    tempUsers[j] += discountedMoney
         
         for i in range(len(users)):
             if users[i][1] <= tempUsers[i]:
                 subscribe += 1
             else:
                 totalProfit += tempUsers[i]
+
+        result = max(result,[subscribe, totalProfit])
         
-        if result < [subscribe, totalProfit]:
-            result = [subscribe, totalProfit]
         return
             
         

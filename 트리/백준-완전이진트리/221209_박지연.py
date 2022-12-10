@@ -4,7 +4,7 @@ from collections import deque
 input = sys.stdin.readline
 n = int(input())
 node = list(input().split())
-answer = [[0]for _ in range(n)]
+answer = [[]for _ in range(n)]
 q = deque()
 q.append([node, 0])
 
@@ -20,5 +20,4 @@ while q:
         answer[cnt+1].append(i[2])
 
 for i in answer:
-    i = i[1:]
     print(' '.join(i))

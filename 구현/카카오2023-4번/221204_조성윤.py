@@ -10,25 +10,22 @@ def solution(numbers):
             i += 1
         targetNum = list('0' * (2 ** i - 1 - len(targetNum)) + targetNum)
         possible = 1
-        dfsTree(targetNum,len(targetNum),1,i)
+        dfsTree(targetNum,0,len(targetNum),1,i)
         result.append(possible)
     return result
-
-def dfsTree(target,root,depth,height):
+def dfsTree(target,start,end,depth,height):
     global possible
-    root = root // 2
+    root = (start + end) // 2
     if depth == height:
         return
     if depth != height and target[root] == '0':
         possible = 0
         return
-    left = root - 1
-    right = root + 1
-    dfsTree(target, left, depth + 1, height)
-    dfsTree(target, right, depth + 1, height)
+    dfsTree(target, start, root - 1, depth + 1, height)
+    dfsTree(target, root + 1, end, depth + 1, height)
     return
     
 if __name__ == "__main__":
-    numbers = [[111,5],[63,111,95]]
+    numbers = [[7,5],[63,111,95]]
     for n in numbers:
         print(solution(n))

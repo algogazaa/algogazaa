@@ -13,6 +13,8 @@ def solution(numbers):
         dfsTree(targetNum,0,len(targetNum),1,i)
         result.append(possible)
     return result
+
+
 def dfsTree(target,start,end,depth,height):
     global possible
     root = (start + end) // 2
@@ -21,6 +23,7 @@ def dfsTree(target,start,end,depth,height):
     if depth != height and target[root] == '0':
         possible = 0
         return
+    
     dfsTree(target, start, root - 1, depth + 1, height)
     dfsTree(target, root + 1, end, depth + 1, height)
     return

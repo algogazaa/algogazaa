@@ -1,4 +1,4 @@
-def solution(m, n, puddles):
+ def solution(m, n, puddles):
     puddles = [[q,p] for [p,q] in puddles]    
     dp = [[0] * (m + 1) for i in range(n + 1)]  
     dp[1][1] = 1          

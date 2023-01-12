@@ -1,3 +1,5 @@
+import sys
+sys.setrecursionlimit(10**6)
 class Node:
     def __init__(self, id, x, y):
         self.id = id
@@ -25,6 +27,7 @@ def addNode(root, child):
 def preOrder(answer, root):
     if root == None:
         return
+    
     # root 넣기
     answer[0].append(root.id)
     # 왼쪽 노드 순회

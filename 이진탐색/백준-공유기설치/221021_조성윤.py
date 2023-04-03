@@ -6,6 +6,7 @@ wifi = []
 for _ in range(n):
     wifi.append(int(input()))
 wifi.sort()
+
 start = 1
 end = wifi[-1] - wifi[0]
 result = 0
